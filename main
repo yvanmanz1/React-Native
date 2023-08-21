@@ -1,0 +1,106 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+
+const Calculator = () => {
+  const [num1, setNum1] = useState('');
+  const [num2, setNum2] = useState('');
+  const [result, setResult] = useState('');
+
+  const handleAddition = () => {
+    const sum = parseFloat(num1) + parseFloat(num2);
+    setResult(sum.toString());
+  };
+
+  const handleSubtraction = () => {
+    const difference = parseFloat(num1) - parseFloat(num2);
+    setResult(difference.toString());
+  };
+
+  const handleMultiplication = () => {
+    const product = parseFloat(num1) * parseFloat(num2);
+    setResult(product.toString());
+  };
+
+  const handleDivision = () => {
+    const quotient = parseFloat(num1) / parseFloat(num2);
+    setResult(quotient.toString());
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Calculator</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Enter a number"
+        onChangeText={(value) => setNum1(value)}
+        keyboardType="numeric"
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Enter another number"
+        onChangeText={(value) => setNum2(value)}
+        keyboardType="numeric"
+      />
+
+      <TouchableOpacity style={styles.button} onPress={handleAddition}>
+        <Text style={styles.buttonText}>+</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={handleSubtraction}>
+        <Text style={styles.buttonText}>-</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={handleMultiplication}>
+        <Text style={styles.buttonText}>*</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={handleDivision}>
+        <Text style={styles.buttonText}>/</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.result}>{result}</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'gray'
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  input: {
+    width: 200,
+    height: 35,
+    borderWidth: 1,
+    borderRadius: 10,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  button: {
+    backgroundColor: 'black',
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginBottom: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  result: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+});
+
+export default Calculator;
