@@ -28,7 +28,7 @@ const Calculator = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Calculator</Text>
+      <Text style={styles.title}> Calculator </Text>
 
       <TextInput
         style={styles.input}
